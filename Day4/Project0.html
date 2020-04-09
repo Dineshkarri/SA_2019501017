@@ -1,23 +1,29 @@
 <html>
     <head>
         <title>My Msit Journey</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="one.css">
+        <link rel="stylesheet" href="variables.scss">
+        <link rel="stylesheet" href="nesting.scss">
         <style>
-             div, p {
+             /* div, p {
             font-family:Arial;
             font-size: 20px;
             color: rgb(255, 0, 85);
-            Text-align: center;
-        }
+            text-align: center;
+        } */
         .name{
-            color:rgb(204, 0, 255);
+            color:rgb(93, 83, 240);
             font-weight: bold;
         }
-        ul {
+        /* ul li {
             color :rgb(95, 12, 173);
         }
         ol {
             color :rgb(185, 10, 10);
-        }
+        } */
+        
         table{
             border:3px solid rgb(58, 56, 56);
             border-collapse:collapse;
@@ -36,19 +42,28 @@
             background-color: rgb(32, 196, 207);
         }
         h1{
-            color:black;
+            color:rgb(2, 2, 2);
             font-size: 18;
             height :auto;
     
         }
-        #one, #two {
-            height :auto;
-            font-family:Arial;
-            font-size: 16px;
-            color: rgb(24, 23, 23);
-            text-align: left;
-            margin-bottom: 15px;
+        input[value=Good]{
+            background-color: green;
         }
+        button:hover{
+            background-color: aquamarine;
+        }
+        @media (min-width: 500px) {
+                body {
+                    background-color: aliceblue;
+                }
+            }
+
+        @media (max-width: 499px) {
+                body {
+                    background-color: rgb(192, 164, 128);
+                }
+            }
 
         </style>
        
@@ -57,13 +72,15 @@
         <div>
             My name is <span class="name">Dinesh</span>
         </div>
-        <img src="mypic.jfif">
+       
         <p>This is my <span class="name">Msit journey</span></p>
-        <h1>About me:</h1>
-        <div id="two">
-        My name is dinesh I had done my graduation in Andhra University.
-        Due to the advertisement in the newspaper I got to know about Msit, and appeared for the GAT exam. Where I got good score and that made me to get a seat in IIITH Msit division.
-        </div>
+        <h1>Information about me:</h1>
+        <a href="file2.html">AboutMe</a>
+        <h4></h4>
+        <a href="file1.html">MyeducationalQualifications</a>
+        <h4></h4>
+        <a href="file3.html">MoreAboutMe</a>
+        <h4></h4>
         <h1>Groups in Msit:</h1>
         <ol>
             <li>RPM'S</li>
@@ -79,6 +96,10 @@
             <li>Java</li>
             <li>Dbms</li>
             <li>ADS</li>
+                <ol>
+                    <li>ADS-1</li>
+                    <li>ADS-2</li>
+                </ol>
             <li>IOS</li>
             <li>CNF</li>
             <li>ICS</li>
@@ -125,7 +146,12 @@
         This courses really helped me in getting the basic knowledge of the present trends in the IT sector.
         </div>
         <form>
-            <input type="text" placeholder="How is msit journey" Name="">
+            <input  name="" list ="preference" placeholder="How is my Webpage" >
+            <datalist id="preference">
+                <option value="Good">
+                <option value="Bad">
+            </datalist>
+            <h3></h3>
             <h1>Click on submit</h1>
             <button>submit</button>
         </form>

@@ -1,0 +1,68 @@
+CODE TIME          (Last updated on Fri, Apr 10th 11:21am)
+
+Today (Fri, Apr 10th)
+----------------------------------------------------------------
+Code time today             :                            3.8 hrs
+Active code time today      :                            3.6 hrs
+90-day avg                  :                              0 min
+
+Yesterday (Thu, Apr 9th)
+-----------------------------------------------------------------
+                Code time :                                 1.40
+      Lines of code added :                                  724
+    Lines of code deleted :                                   44
+         Characters added :                                  769
+ Hours coded outside work :                                 1.40
+      Hours coded at work :                                    0
+       Characters deleted :                                  251
+         Total keystrokes :                                1,855
+                      KPM :                                22.30
+               Live share :                                0 min
+             Top language :                                 html
+
+Last week (Sun, Mar 29th - Sat, Apr 4th)
+-----------------------------------------------------------------
+                Code time :                                    0
+      Lines of code added :                                    0
+    Lines of code deleted :                                    0
+         Characters added :                                    0
+       Characters deleted :                                    0
+         Total keystrokes :                                    0
+                      KPM :                                    0
+      Hours coded at work :                                    0
+ Hours coded outside work :                                    0
+               Live share :                                0 min
+
+  📂 Weekly top projects
+  --------------------------------------------------------------
+  No top projects available
+
+  🔥 Weekly code time heatmap
+  --------------------------------------------------------------
+  No weekly code time heatmap available
+
+90-day avg by day of week
+-----------------------------------------------------------------
+                      sun :  0 min
+                      mon :  0 min
+                      tue :  0 min
+                      wed :  0 min
+                      thu : ▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮ 1.4 hrs
+                      fri :  0 min
+                      sat :  0 min
+
+Last 90 days (Apr 9th, 2020 - Apr 9th, 2020)
+-----------------------------------------------------------------
+                Code time :                                 1.40
+      Lines of code added :                                  724
+    Lines of code deleted :                                   44
+         Characters added :                                  769
+ Hours coded outside work :                                 1.40
+      Hours coded at work :                                    0
+       Characters deleted :                                  251
+         Total keystrokes :                                1,855
+                      KPM :                                22.30
+               Live share :                                0 min
+             Top language :                                 html
+
+

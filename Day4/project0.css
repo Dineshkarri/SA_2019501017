@@ -1,0 +1,77 @@
+#one {
+    height :auto;
+    font-family:inherit;
+    font-size: 18px;
+    color: rgb(24, 23, 23);
+    text-align: left;
+    margin-bottom: 15px;
+} 
+.name{
+    color:rgb(93, 83, 240);
+    font-weight: bold;
+}
+table{
+    border:3px solid rgb(58, 56, 56);
+    border-collapse:collapse;
+    width : 35%;
+    background-color: antiquewhite;
+    margin: 30px;
+    
+}
+th,td{
+    border:3px solid rgb(58, 56, 56);
+    text-align:center;
+    padding: 5px;
+    
+}
+th {
+    background-color: rgb(32, 196, 207);
+}
+h1{
+    color:rgb(2, 2, 2);
+    font-size: 18;
+    height :auto;
+
+}
+input[value=Good]{
+    background-color: green;
+}
+button:hover{
+    background-color: aquamarine;
+}
+@media (min-width: 500px) {
+        body {
+            background-color: aliceblue;
+        }
+    }
+
+@media (max-width: 499px) {
+        body {
+            background-color: rgb(192, 164, 128);
+        }
+    }
+    .grid {
+        background-color: rgb(128, 0, 85);
+display: grid;
+padding: 20px; 
+grid-column-gap: 20px; 
+/* grid-row-gap: 10px; */
+grid-template-columns: 400px auto;
+}
+
+.grid > div {
+background-color: white; 
+font-size: 16px;
+padding: 20px; 
+/* margin: 10px; */
+/* text-align: center; */
+}
+#two{
+        font-style: italic;
+        text-align: center;
+}
+#three{
+    font-weight: bold;
+    font-style: italic;
+    color: brown;
+}

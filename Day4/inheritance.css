@@ -1,0 +1,18 @@
+.carrergoal, .hobbies, .Besties {
+  font-size: 18px;
+  font-weight: bold;
+  border: 1px solid black;
+  padding: 20px;
+  margin: 20px;
+  text-align: center; }
+
+.carrergoal {
+  background-color: burlywood; }
+
+.hobbies {
+  background-color: antiquewhite; }
+
+.Besties {
+  background-color: aliceblue; }
+
+/*# sourceMappingURL=inheritance.css.map */

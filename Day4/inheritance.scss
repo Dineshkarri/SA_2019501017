@@ -3,6 +3,8 @@
     font-size: 18px;
     font-weight: bold;
     border: 1px solid black;
+    border-radius: 50px;
+    display: inline-block;
     padding: 20px;
     margin: 20px;
     text-align: center;
@@ -21,4 +23,5 @@
 .Besties {
     @extend %message;
     background-color: aliceblue;
+   
 }

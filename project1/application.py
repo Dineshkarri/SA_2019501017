@@ -37,11 +37,28 @@ def index():
 def register():
     if (request.method == "POST"):
         username = request.form.get("uname")
-        # print(username)
         password = request.form.get("pswd")
-        # print(password)
-        return render_template("usernames.html", name=username)
+        dt = datetime.datetime.now()
+        data = Data(Username=username,Password=password,Timestamp=dt)
+        db.session.add(data)
+        db.session.commit()
+        if not username:
+            text = "Please enter username to register"
+            return render_template("usernames.html", name=text, msg="ERROR")
+        elif not password:
+            text="Please provide password"
+            return render_template("usernames.html", name=text ,msg="ERROR")
+        else:
+            # text = "Success"
+            return render_template("usernames.html",msg="SUCCESS")
+
     return render_template("register.html")
+
+@app.route("/admin")
+def admin():
+    data1 = Data.query.all()
+    return render_template("userlist.html", name=data1)
+
 
 def main():
     app.app_context().push()

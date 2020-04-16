@@ -4,6 +4,7 @@ from flask import Flask, session, render_template, request
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
+from models import *
 
 app = Flask(__name__)
 
@@ -20,6 +21,12 @@ Session(app)
 engine = create_engine(os.getenv("DATABASE_URL"))
 db = scoped_session(sessionmaker(bind=engine))
 
+# Tell Flask what SQLAlchemy database to use.
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+# Link the Flask app with the database
+# db.init_app(app)
 
 @app.route("/")
 def index():
@@ -34,3 +41,11 @@ def register():
         print(password)
         return render_template("usernames.html", name=username)
     return render_template("register.html")
+
+def main():
+    db.create_all()
+
+
+if __name__ == "__main__":
+    with app.app_context():
+        main()

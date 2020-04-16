@@ -1,5 +1,5 @@
 import os
-
+import datetime
 from flask import Flask, session, render_template, request
 from flask_session import Session
 from sqlalchemy import create_engine
@@ -18,15 +18,16 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Set up database
-engine = create_engine(os.getenv("DATABASE_URL"))
-db = scoped_session(sessionmaker(bind=engine))
+# engine = create_engine(os.getenv("DATABASE_URL"))
+# db = scoped_session(sessionmaker(bind=engine))
 
 # Tell Flask what SQLAlchemy database to use.
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # Link the Flask app with the database
-# db.init_app(app)
+db.init_app(app)
+
 
 @app.route("/")
 def index():
@@ -36,16 +37,18 @@ def index():
 def register():
     if (request.method == "POST"):
         username = request.form.get("uname")
-        print(username)
+        # print(username)
         password = request.form.get("pswd")
-        print(password)
+        # print(password)
         return render_template("usernames.html", name=username)
     return render_template("register.html")
 
 def main():
+    app.app_context().push()
     db.create_all()
 
 
+
 if __name__ == "__main__":
-    with app.app_context():
-        main()
+    # with app.app_context():
+    main()

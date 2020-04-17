@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Userlist</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .table{
+            border: solid black;
+            border-width: 3px;
+            width: 90%;
+            margin: auto;
+        }
+        th, td, tr{
+            border:2px double black;
+            text-align: center;
+        }
+        h2{
+            color:darkgrey
+        }
+    </style>
+    </head>
+    <body>
+        <h2>Userslist:</h2>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Username</th>
+                <th scope="col">Password</th>
+                <th scope="col">Creation Timestamp</th>
+              </tr>
+            </thead>
+            {% for d in name %}
+                <tbody>
+                <tr>
+                    <td>{{ d.Username }}</td>
+                    <td>{{ d.Password }}</td>
+                    <td>{{ d.Timestamp }}</td>
+                </tr>
+                </tbody>
+            {% endfor %}
+        </table>
+    </body>
+</html>

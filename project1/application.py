@@ -43,7 +43,6 @@ def register():
         data2 = Data.query.all()
         for user in data2:
             if username == user.Username:
-                # return render_template("user.html")
                 return "<h2 Style='color: red;text-align:center'>You already have registered !Please Login </h2>"
         if not username:
             text = "Please enter username to register"
@@ -72,10 +71,23 @@ def userhome():
         for user in data3:
             if user.Username == username:
                 if user.Password == password:
-                    return render_template("user.html")
+                    session["username"]= user.Username
+                    return redirect(url_for('user'))
         return render_template("register.html",flag=False)
     if (request.method == "GET"):
         return redirect(url_for('register'))
+
+@app.route("/logout")
+def sessiontimeout():
+    session.pop("username",None)
+    return redirect(url_for('register'))
+
+@app.route("/user")
+def user():
+    if session.get("username") is not None:
+        return render_template("user.html")
+    return redirect(url_for('register'))
+
 
 
 def main():

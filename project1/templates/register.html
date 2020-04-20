@@ -40,7 +40,7 @@ hr {
 }
 
 /* Set a style for the submit button */
-.registerbtn {
+.registerbtn, .btn {
   background-color: #4CAF50;
   color: white;
   padding: 16px 20px;
@@ -51,7 +51,7 @@ hr {
   opacity: 1;
 }
 
-.registerbtn:hover {
+.registerbtn:hover, .btn:hover{
   opacity: 2;
   background-color: brown;
   color:white;
@@ -64,33 +64,36 @@ a {
 }
 
 /* Set a grey background color and center the text of the "sign in" section */
-.signin {
-  background-color: #f1f1f1;
+.signin, h4 {
+  /* background-color: #f1f1f1; */
   text-align: center;
 }
 </style>
 </head>
 <body>
 
-<form action="/register" method="POST">
-  <div class="container">
-    <h1>Register</h1>
-    <p>Please fill in this form to create an account.</p>
-    <hr>
+  <form action="/register" method="POST">
+    <div class="container">
+      {% if not flag %}
+      <h4>Invalid Username or Password</h4>
+      {% endif%}
+      <h1>Register</h1>
+      <p>Please fill in this form to create an account.</p>
+      <hr>
 
-    <label for="uname"><b>UserName</b></label>
-    <input type="text" placeholder="Enter UserName" name="uname">
+      <label for="uname"><b>UserName</b></label>
+      <input type="text" placeholder="Enter UserName" name="uname">
 
-    <label for="pswd"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="pswd">
+      <label for="pswd"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="pswd">
 
-   <hr>
-   
-    <button type="input" class="registerbtn">Register</button>
-  </div>
+      <hr>
+    
+      <button type="input" class="registerbtn">Register</button>
+      <h4>Already have an account! Please Login </p>
+      <input type="submit" value="Login" formaction="/auth" class="btn">
+    </div>  
+  </form>
   
-  
-</form>
-
 </body>
 </html>

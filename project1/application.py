@@ -40,10 +40,7 @@ def register():
         username = request.form.get("uname")
         password = request.form.get("pswd")
         dt = datetime.datetime.now()
-        data2 = Data.query.all()
-        for user in data2:
-            if username == user.Username:
-                return "<h2 Style='color: red;text-align:center'>You already have registered !Please Login </h2>"
+        
         if not username:
             text = "Please enter username to register"
             return render_template("usernames.html", name=text, msg="ERROR")
@@ -55,6 +52,10 @@ def register():
             db.session.add(data)
             db.session.commit()
             return render_template("usernames.html",msg="SUCCESS")
+        data2 = Data.query.all()
+        for user in data2:
+            if username == user.Username:
+                return "<h2 Style='color: red;text-align:center'>You already have registered !Please Login </h2>"
     return render_template("register.html", flag=True)
 
 @app.route("/admin")
@@ -67,12 +68,18 @@ def userhome():
     if (request.method == "POST"):
         username = request.form.get("uname")
         password = request.form.get("pswd")
+        if not username:
+            text = "Please enter username to register"
+            return render_template("usernames.html", name=text, msg="ERROR")
+        elif not password:
+            text="Please provide password"
+            return render_template("usernames.html", name=text ,msg="ERROR")
         data3 = Data.query.all()
         for user in data3:
             if user.Username == username:
                 if user.Password == password:
                     session["username"]= user.Username
-                    return redirect(url_for('user'))
+                    return redirect("/user")
         return render_template("register.html",flag=False)
     if (request.method == "GET"):
         return redirect(url_for('register'))

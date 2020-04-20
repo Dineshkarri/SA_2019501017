@@ -23,7 +23,7 @@ def main():
         counter += 1
         book = Book(id=counter, isbn=isbn, title=title, author=author, pub_year=int(pub_year))
         db.session.add(book)
-        print(f"{counter}) Added {title} with {isbn} written by {author} in {pub_year}.")
+        # print(f"{counter}) Added {title} with {isbn} written by {author} in {pub_year}.")
     db.session.commit()
 
 if __name__ == "__main__":

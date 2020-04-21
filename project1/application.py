@@ -48,14 +48,14 @@ def register():
             text="Please provide password"
             return render_template("usernames.html", name=text ,msg="ERROR")
         else:
+            data2 = Data.query.all()
+            for user in data2:
+                if username == user.Username:
+                    return "<h2 Style='color: red;text-align:center'>You already have registered !Please Login </h2>"
             data = Data(Username=username,Password=password,Timestamp=dt)
             db.session.add(data)
             db.session.commit()
             return render_template("usernames.html",msg="SUCCESS")
-        data2 = Data.query.all()
-        for user in data2:
-            if username == user.Username:
-                return "<h2 Style='color: red;text-align:center'>You already have registered !Please Login </h2>"
     return render_template("register.html", flag=True)
 
 @app.route("/admin")

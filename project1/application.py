@@ -5,6 +5,7 @@ from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from models import *
+from sqlalchemy import or_
 
 
 app = Flask(__name__)
@@ -32,7 +33,7 @@ db.init_app(app)
 
 @app.route("/")
 def index():
-    return render_template("register.html", flag=True)
+    return render_template("index.html", flag=True)
 
 @app.route("/register",methods=["GET","POST"])
 def register():
@@ -89,13 +90,35 @@ def sessiontimeout():
     session.pop("username",None)
     return redirect(url_for('register'))
 
-@app.route("/user")
+@app.route("/user",methods=["GET","POST"])
 def user():
-    if session.get("username") is not None:
-        return render_template("user.html")
-    return redirect(url_for('register'))
+    if session.get("username") is None:
+        return redirect(url_for('register'))
+    if (request.method == "POST"):
+        search = request.form.get("search").title()  
+        print(search)
+        search_query="%"+search+"%"
+        # title = Book.query.filter(Book.title.like(search_query)).all()
+        # print(title)
+        books = Book.query.filter(or_(Book.title.like(search_query), Book.author.like(search_query), Book.isbn.like(search_query))).all()
+        c=0
+        for each in books:
+            c=c+1
+        print(c)
+        if books == []:
+            return render_template("user.html",name=books, flag=False,var=True)
+        # print(books) 
+        # print(data)
+        return render_template("user.html",name=books,flag=False)
+    return render_template("user.html",flag=True)
+    
+@app.route("/book",methods=["GET"])
+@app.route("/book/<isbn>")
+def book(isbn):
+    return render_template("book.html",isbn=isbn)
+    
 
-
+    
 
 def main():
     app.app_context().push()

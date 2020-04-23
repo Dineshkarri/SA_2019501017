@@ -1,5 +1,7 @@
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         .btn {
             background-color: #4CAF50;
@@ -18,9 +20,86 @@
         background-color: brown;
         color:white;
         }
+        
+        body {
+            background-image :url('book.jpg');
+            font-family: Arial;
+        }
+        
+        * {
+        box-sizing: border-box;
+        }
+
+        form.example input[type=text] {
+        padding: 10px;
+        font-size: 17px;
+        border: 1.5px solid grey;
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+        }
+
+        form.example button {
+        float: left;
+        width: 20%;
+        padding: 11.85px;
+        background: #2196F3;
+        color: white;
+        font-size: 17px;
+        border: 1.5px solid grey;
+        border-left: none;
+        cursor: pointer;
+        }
+
+        form.example button:hover {
+        background: #0b7dda;
+        }
+
+        li{
+            color:rgb(114, 155, 155);
+            margin-top:20px;
+            text-align: left;
+        }
+        a{
+            color:rgb(250, 145, 215);
+        }
+        p{
+            color: white;
+            text-align: left;
+        }
+        h4{
+            color:red;
+        }
     </style>
     </head>
     <body>
+        <h2>Search for book</h2>
+        <form class="example" action="/user" method="POST">
+        <input type="text" placeholder="Search for.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+        <p>'</p>
+        {% if not flag%}
+        <h3>Results for the search:</h3>
+        {% endif %}
+        {% if var %}
+        <h4>OOPS!..There are no results found..!</h4>
+        {% endif %}
+        <ul>
+            {% for each in name %}
+            <!-- <form action="{{url_for('book')}}" method="POST">
+            <button type="submit" value="{{each.id}}" name="id"><li>{{each.title}}</li></button>
+
+            </form> -->
+            <div >
+                <a href="/book/{{each.isbn}}"><li>{{each.title}}</li></a>
+                <p></p>
+            </div>
+
+            {% endfor %}
+        </ul>
+        
+
         <form>
             <input type="submit" value="Logout" formaction="/logout" class="btn">
         </form>

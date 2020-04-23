@@ -111,7 +111,10 @@ def user():
 @app.route("/book",methods=["GET"])
 @app.route("/book/<isbn>")
 def book(isbn):
-    return render_template("book.html",isbn=isbn)
+    book = Book.query.filter_by(isbn =isbn).all()
+    print(book[0].title)
+    
+    return render_template("book.html",isbn=isbn,title = book[0].title,author = book[0].author,pub_year = book[0].pub_year)
     
 
 def main():

@@ -98,8 +98,6 @@ def user():
         search = request.form.get("search").title()  
         print(search)
         search_query="%"+search+"%"
-        # title = Book.query.filter(Book.title.like(search_query)).all()
-        # print(title)
         books = Book.query.filter(or_(Book.title.like(search_query), Book.author.like(search_query), Book.isbn.like(search_query))).all()
         c=0
         for each in books:
@@ -107,8 +105,6 @@ def user():
         print(c)
         if books == []:
             return render_template("user.html",name=books, flag=False,var=True)
-        # print(books) 
-        # print(data)
         return render_template("user.html",name=books,flag=False)
     return render_template("user.html",flag=True)
     
@@ -118,12 +114,9 @@ def book(isbn):
     return render_template("book.html",isbn=isbn)
     
 
-    
-
 def main():
     app.app_context().push()
     db.create_all()
-
 
 
 if __name__ == "__main__":

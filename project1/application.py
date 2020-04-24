@@ -95,26 +95,40 @@ def user():
     if session.get("username") is None:
         return redirect(url_for('register'))
     if (request.method == "POST"):
-        search = request.form.get("search").title()  
-        print(search)
+        search = request.form.get("search").title()
         search_query="%"+search+"%"
         books = Book.query.filter(or_(Book.title.like(search_query), Book.author.like(search_query), Book.isbn.like(search_query))).all()
         c=0
         for each in books:
             c=c+1
-        print(c)
         if books == []:
             return render_template("user.html",name=books, flag=False,var=True)
         return render_template("user.html",name=books,flag=False)
     return render_template("user.html",flag=True)
     
 @app.route("/book",methods=["GET"])
-@app.route("/book/<isbn>")
-def book(isbn):
-    book = Book.query.filter_by(isbn =isbn).all()
-    print(book[0].title)
+def b():
+    return render_template("fun.html")
     
-    return render_template("book.html",isbn=isbn,title = book[0].title,author = book[0].author,pub_year = book[0].pub_year)
+@app.route("/book/<isbn>",methods=["GET","POST"])
+def book(isbn):
+    if (request.method=="GET"):
+        book = Book.query.filter_by(isbn =isbn).all()
+        review1=Review.query.filter_by(isbn=isbn).all()
+        print(review1) 
+        return render_template("book.html",isbn=isbn,title=book[0].title,author=book[0].author,pub_year=book[0].pub_year,review1=review1)
+    if (request.method=="POST"):
+        rating=request.form.get("rating")
+        comment=request.form.get("comment")
+        unique=isbn + "_" +session["username"]
+        try:
+            reviews=Review(isbn=isbn,username=session["username"],rating=comment,review=rating,isbnusername=unique)
+            db.session.add(reviews)
+            db.session.commit()
+        except:
+            return "A user can review a single book only once"       
+    return render_template("book.html")
+   
     
 
 def main():

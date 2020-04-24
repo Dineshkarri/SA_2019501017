@@ -106,12 +106,14 @@ def user():
         return render_template("user.html",name=books,flag=False)
     return render_template("user.html",flag=True)
     
-@app.route("/book",methods=["GET"])
-def b():
+@app.route("/book",methods=["GET","POST"])
+def book():
+    if (request.method=="GET"):
+        return render_template("fun.html")
     return render_template("fun.html")
-    
+
 @app.route("/book/<isbn>",methods=["GET","POST"])
-def book(isbn):
+def b(isbn):
     if (request.method=="GET"):
         book = Book.query.filter_by(isbn =isbn).all()
         review1=Review.query.filter_by(isbn=isbn).all()

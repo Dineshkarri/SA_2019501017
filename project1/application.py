@@ -117,7 +117,7 @@ def b(isbn):
     if (request.method=="GET"):
         book = Book.query.filter_by(isbn =isbn).all()
         review1=Review.query.filter_by(isbn=isbn).all()
-        print(review1) 
+        #print(review1) 
         return render_template("book.html",isbn=isbn,title=book[0].title,author=book[0].author,pub_year=book[0].pub_year,review1=review1)
     if (request.method=="POST"):
         rating=request.form.get("rating")
@@ -128,7 +128,7 @@ def b(isbn):
             db.session.add(reviews)
             db.session.commit()
         except:
-            return "A user can review a single book only once"       
+            return render_template("error.html")     
     return render_template("book.html")
    
     

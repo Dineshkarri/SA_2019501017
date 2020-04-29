@@ -2,6 +2,68 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script type = "text/javascript">
+  function notEmpty(username, password) {
+      return username != "" && password != ""
+  }
+
+  function checkUsername(username) {
+      arr = username.split("@")
+      if (arr.length == 2) {
+          domain = arr[1].split(".")
+          if (domain.length == 2) {
+              return true
+          }
+      }
+      return false
+  }
+
+  function checkPassword(password) {
+      if (password.length < 6) {
+          return false
+      }
+      upper = false
+      lower = false
+      number = false
+      symbol = false
+      for (let i = 0; i < password.length; i++) {
+          code = password.charCodeAt(i)
+          if (code >= 65 && code <= 90) {
+              upper = true
+          } else if (code >= 97 && code <= 122) {
+              lower = true
+          } else if (code >= 48 && code <= 57) {
+              number = true
+          } else {
+              symbol = true
+          }
+      }
+      return upper && lower && number && symbol
+  }
+
+  function validate() {
+      username = document.form.uname.value
+      password = document.form.pswd.value
+
+      if (!notEmpty(username, password)) {
+          alert("Username and password fields cannot be empty.")
+          document.form.uname.focus()
+          return false
+      }
+      if (!checkUsername(username)) {
+          alert("Username should be a valid email address.")
+          document.form.uname.focus()
+          return false
+      }
+      if (!checkPassword(password)) {
+          alert("Password must contain a upper case letter, a lower case letter, a number and a symbol.")
+          document.form.pswd.focus()
+          return false
+      }
+      return true
+  }
+
+</script>
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -72,7 +134,7 @@ a {
 </head>
 <body>
 
-  <form action="/register" method="POST">
+  <form name="myform" action="/register" method="POST" onsubmit="return(validate());">
     <div class="container">
       {% if not flag %}
       <h4>Invalid Username or Password</h4>
